@@ -10,8 +10,8 @@
     <!--Adding a ListView -->
     <ListView
         android:id="@+id/listView"
-        android:layout_width="409dp"
-        android:layout_height="601dp"
+        android:layout_width="420dp"
+        android:layout_height="445dp"
         android:layout_marginTop="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,17 +19,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--Adding a TextView -->
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal"
-        android:text="GFG"
-        android:textColor="@android:color/holo_green_dark"
+        android:text="Notre coffre fort de notes"
+        android:textColor="@color/teal_700"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="302dp"
+        android:layout_height="144dp"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.811"
+        app:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

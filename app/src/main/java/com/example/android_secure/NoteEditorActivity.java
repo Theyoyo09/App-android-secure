@@ -4,10 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.HashSet;
 
 public class NoteEditorActivity extends AppCompatActivity {
@@ -56,5 +64,39 @@ public class NoteEditorActivity extends AppCompatActivity {
                 // add your code here
             }
         });
+    }
+
+    public void Retour(View view) {
+        finish();
+    }
+
+    public void Exportation(View view) throws Exception{
+
+        try {
+            String rootPath = Environment.getExternalStorageDirectory()
+                    .getAbsolutePath() + "/Download/";
+            File root = new File(rootPath);
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            File f = new File(rootPath + "Exportage_note.txt");
+            if (f.exists()) {
+                f.delete();
+            }
+            FileWriter write = new FileWriter(f);
+            PrintWriter print = new PrintWriter(write);
+            print.print("lol");
+            print.close();
+
+            f.createNewFile();
+
+
+            FileOutputStream out = new FileOutputStream(f);
+
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
