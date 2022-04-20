@@ -1,0 +1,2 @@
+rootProject.name = "Android_secure"
+include ':app'
