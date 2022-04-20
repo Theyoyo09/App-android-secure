@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView);
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
         String set = sharedPreferences.getString("notes", null);
-        System.out.print(set.toString());
-        String result = decrypt(set.toString());
+        System.out.print(set);
+        String result = decrypt(set);
         System.out.print(result);
 
         if (set == null) {
