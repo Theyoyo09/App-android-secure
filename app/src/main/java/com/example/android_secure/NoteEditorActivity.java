@@ -15,10 +15,13 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 public class NoteEditorActivity extends AppCompatActivity {
     int noteId;
+    String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,9 @@ public class NoteEditorActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
                 //HashSet<String> set = new HashSet(MainActivity.notes);
                 String result = MainActivity.encrypt(MainActivity.notes.toString());
-                System.out.print(result);
+             //   System.out.print(result);
+                content = MainActivity.notes.toString();
+                System.out.print(content);
                 sharedPreferences.edit().putString("notes", result).apply();
             }
 
@@ -84,20 +89,23 @@ public class NoteEditorActivity extends AppCompatActivity {
             if (f.exists()) {
                 f.delete();
             }
-            FileWriter write = new FileWriter(f);
-            PrintWriter print = new PrintWriter(write);
-            print.print("lol");
-            print.close();
+
 
             f.createNewFile();
 
 
-            FileOutputStream out = new FileOutputStream(f);
+            try (FileOutputStream fos = new FileOutputStream(f);
+                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
-            out.flush();
-            out.close();
+
+                // write object to file
+                oos.writeObject(content);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-}
+
+    } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }}
