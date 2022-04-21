@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -98,11 +99,18 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listView);
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
+
+        //A supprimer une fois l'initialisation faite
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
+        // =======================
+
+
         String set = sharedPreferences.getString("notes", null);
         System.out.print(set);
         String result = decrypt(set);
         System.out.print(result);
-
         if (set == null) {
 
             notes.add("Example note");
