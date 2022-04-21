@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;

@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.HashSet;
 
 public class NoteEditorActivity extends AppCompatActivity {
     int noteId;
