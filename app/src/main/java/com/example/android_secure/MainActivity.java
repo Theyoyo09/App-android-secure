@@ -19,10 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -143,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                                 notes.remove(itemToDelete);
                                 arrayAdapter.notifyDataSetChanged();
                                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
-                                encrypt(MainActivity.notes.toString());
+                                String set = encrypt(MainActivity.notes.toString());
                                 sharedPreferences.edit().putString("notes", set).apply();
                             }
                         }).setNegativeButton("No", null).show();
